@@ -21,8 +21,8 @@ int main(){
 
     total = valor1 + valor2;
     total2 = valor1 - valor2;
-    
-    printf("Es resultado de la suma es: %d\n", total);
-    printf("El resultado de la resta es: %d\n", total2);
+
+    printf("Es resultado de la suma es: %d \n", total);
+    printf("El resultado de la resta es: %d \n", total2);
 }
 
