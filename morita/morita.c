@@ -1,9 +1,12 @@
 #include <stdio.h>
+#include "campo.h"
 
 int main(){
+    respuesta();
 
-    printf("hola");
-    int cebolla;
+    int suma;
+    printf("Dame un numero ");
+    scanf("%d", &suma);
 
-
+    numero(suma);
 }
