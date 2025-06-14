@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nocheee</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('https://i.pinimg.com/736x/6d/59/38/6d5938dd7b271e9ad1112ac481c2c4d9.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .burbuja-texto{
+            color: rgb(0, 0, 0);
+            font-weight: bolder;
+        }
+
+        @keyframes gradientAnimation{
+            0% { background-position: 0% 50%;}
+            50% { background-position: 100% 50%;}
+            100% { background-position: 0% 50%;}
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); } /* Se agranda */
+            100% { transform: scale(1); } /* Vuelve a su tamaño normal */
+        }
+
+        .mensaje{
+            background: rgb(219, 212, 212);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+            font-size: 28px;
+            color: rgb(236, 10, 135);
+            font-weight: bolder;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+            animation: heartbeat 1.5s infinite ease-in-out;
+
+        }
+
+        .mensaje:hover{
+            transform: scale(1.1);
+        }
+
+        @keyframes floatHearts {
+            0%{ transform: translateY(0) scale(1); opacity:1;}
+            50% { transform: translateY(-150px) scale(1.5); opacity:0.5}
+            100% { transform: translateY(0) scale(1); opacity:1}
+        }
+
+        .hearts{
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            z-index: -1;
+            font-size: 50px;
+            color: rgba(206, 42, 132, 0.712);
+            animation: floatHearts 5s ease-in-out infinite;
+        }
+
+        .hearts:nth-child(2) {left:25%; animation-duration: 6s;}
+
+        .hearts:nth-child(2) {left: 25%; animation-duration: 6s}
+        .hearts:nth-child(3) {left: 40%; animation-duration: 7s}
+        .hearts:nth-child(4) {left: 60%; animation-duration: 8s}
+        .hearts:nth-child(5) {left: 75%; animation-duration: 9s}
+
+        @keyframes fadeIntext {
+            0% {opacity: 0;}
+            50% {opacity:0.5; transform:scale(1.2) ;}
+            100% {opacity: 1; transform: scale(1);}
+        }
+
+        .burbuja-texto{
+            position: absolute;
+            font-size: 18px;
+            font-family: 'cursive';
+            background-color: rgba(255,255,255,0.8);
+            padding: 10px 20px;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation:floatText 8s ease-in-out forwards;
+            white-space: nowrap;
+        }
+
+        @keyframes floatText{
+            0% {opacity: 0; transform:scale(0.5) translateY(0px);}
+            50% {opacity:1; transform:scale(1.2) translateY(-50px)}
+            100% {opacity:0; transform: scale(1) translateY(-100px)}
+        }
+
+    </style>
+</head>
+<body>
+    <div class="mensaje">Te quiero</div>
+    <div id="burbuja-texto"></div>
+    <script>
+        const mensajes = [
+            "Quiero compartir mi silla contigo",
+            "Quiero ver salir el sol y despedirlo",
+            "Quiero caminar y correr a tu ladito",
+            "Quiero buscar y encontrarme a solas contigo",
+            "Quiero dormir y soñar, caricias contigo",
+            "Quiero reir y llorar con tus ojitos",
+            "Quiero compartir mis secretos y suspiros",
+            "Quiero aprender a entender al mundo contigo"
+        ];
+
+        function createTextBubble() {
+            const burbuja = document.createElement("div");
+            burbuja.className = "burbuja-texto";
+
+            // --- CORRECCIÓN 1: 'length' en lugar de 'lenght' ---
+            burbuja.innerText = mensajes[Math.floor(Math.random() * mensajes.length)];
+
+            // Generar posiciones aleatorias
+            const left = Math.random() * 80 + 10; // De 5% a 75% para dejar espacio en los bordes
+            const top = Math.random() * 80 + 10;  // De 5% a 75% para dejar espacio en los bordes
+
+            burbuja.style.position = "absolute";
+            burbuja.style.left = left + "vw";
+            burbuja.style.top = top + "vh";
+
+            document.body.appendChild(burbuja); // <-- Agregamos directamente al body
+
+            setTimeout(() => {
+                burbuja.remove();
+            }, 5000);
+        }
+
+        // Llama a la función para crear burbujas cada 0.5 segundos
+        setInterval(createTextBubble, 500);
+    </script>
+    
+</body>
+</html>
